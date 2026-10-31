@@ -3,114 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vortex Client - TRAKXIS GAMES</title>
+    <title>Vortex Client | TRAKXIS GAMES</title>
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background-color: #0b0f19;
+            background: linear-gradient(135deg, #050515, #0b0f29, #1b143f);
             color: #ffffff;
             height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        /* Splash Screen (شاشة التحميل الفضائية) */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, #1a1c29 0%, #0b0f19 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease;
+            overflow: hidden;
         }
-        .space-logo {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #00ffff;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        .launcher-container {
+            background: rgba(15, 23, 42, 0.85);
+            border: 2px solid #00f0ff;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+            border-radius: 15px;
+            padding: 40px;
+            width: 450px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            color: #00f0ff;
+            font-size: 28px;
             margin-bottom: 10px;
-            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
         }
-        .studio-name {
-            font-size: 1.1rem;
-            color: #8a99ad;
-            margin-bottom: 30px;
-            letter-spacing: 4px;
+        p.studio {
+            color: #a5b4fc;
+            font-size: 14px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
         }
-        .loader-bar {
-            width: 300px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-            position: relative;
+        .input-group {
+            margin-bottom: 20px;
+            text-align: right;
         }
-        .loader-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #00ffff, #0077ff);
-            box-shadow: 0 0 10px #00ffff;
-            animation: loadProgress 2.5s forwards;
+        label {
+            display: block;
+            font-size: 13px;
+            color: #38bdf8;
+            margin-bottom: 8px;
         }
-        @keyframes loadProgress {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-
-        /* Main Launcher UI (واجهة اللانشر الرئيسية) */
-        #launcher-main {
-            display: none;
-            width: 900px;
-            height: 550px;
-            background: rgba(18, 24, 38, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            border-radius: 12px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        .header {
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .header h1 {
-            font-size: 1.5rem;
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0,255,255,0.4);
-        }
-        .content {
-            display: flex;
-            flex: 1;
-            padding: 25px;
-            gap: 25px;
-        }
-        .sidebar {
-            width: 250px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .panel {
-            background: rgba(11, 15, 25, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        select, input {
+            width: 100%;
+            padding: 12px;
+            background: #020617;
+            border: 1px solid #1e293b;
+            color: #fff;
             border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        select:focus, input:focus {
+            border-color: #00f0ff;
+            box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+        }
+        .launch-btn {
+            width: 100%;
+            background: linear-gradient(90deg, #0284c7, #00f0ff);
+            color: #000;
+            font-weight: bold;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            text-shadow: none;
+        }
+        .launch-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="launcher-container">
+        <h1>VORTEX CLIENT</h1>
+        <p class="studio">BY TRAKXIS GAMES</p>
+        
+        <div class="input-group">
+            <label>اسم اللاعب (Account)</label>
+            <input type="text" id="username" placeholder="أدخل اسمك هنا..." value="Ahmed_Sfaa">
+        </div>
+
+        <div class="input-group">
+            <label>اختر إصدار ماين كرافت (Minecraft Version)</label>
+            <select id="version">
+                <option value="1.21.5">Vortex 1.21.5 (Optimized)</option>
+                <option value="1.21.4">Vortex 1.21.4</option>
+                <option value="1.21.2">Vortex 1.21.2</option>
+            </select>
+        </div>
+
+        <button class="launch-btn" onclick="launchGame()">تشغيل اللعبة (LAUNCH)</button>
+    </div>
+
+    <script>
+        function launchGame() {
+            const user = document.getElementById('username').value;
+            const ver = document.getElementById('version').value;
+            if(!user) {
+                alert('الرجاء إدخال اسم اللاعب!');
+                return;
+            }
+            alert('جاري إطلاق Vortex Client للإصدار ' + ver + ' للمستخدم ' + user + ' بنجاح! 🚀');
+        }
+    </script>
+</body>
+</html>
