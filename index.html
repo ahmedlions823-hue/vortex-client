@@ -5,121 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vortex Client | TRAKXIS GAMES</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
         body {
-            background: linear-gradient(135deg, #050515, #0b0f29, #1b143f);
-            color: #ffffff;
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+            color: #fff;
             height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
         }
-        .launcher-container {
-            background: rgba(15, 23, 42, 0.85);
-            border: 2px solid #00f0ff;
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
-            border-radius: 15px;
+        .launcher-box {
+            background: rgba(15, 23, 42, 0.9);
+            border: 2px solid #06b6d4;
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+            border-radius: 16px;
             padding: 40px;
-            width: 450px;
+            width: 420px;
             text-align: center;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
-        h1 {
-            color: #00f0ff;
-            font-size: 28px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
-        }
-        p.studio {
-            color: #a5b4fc;
-            font-size: 14px;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
-        .input-group {
-            margin-bottom: 20px;
-            text-align: right;
-        }
-        label {
-            display: block;
-            font-size: 13px;
-            color: #38bdf8;
-            margin-bottom: 8px;
-        }
-        select, input {
+        h1 { color: #22d3ee; font-size: 26px; margin-bottom: 5px; letter-spacing: 2px; }
+        .studio { color: #94a3b8; font-size: 13px; margin-bottom: 25px; text-transform: uppercase; }
+        .field { margin-bottom: 20px; text-align: right; }
+        label { display: block; color: #38bdf8; font-size: 13px; margin-bottom: 8px; font-weight: 600; }
+        input, select {
             width: 100%;
             padding: 12px;
             background: #020617;
-            border: 1px solid #1e293b;
+            border: 1px solid #334155;
             color: #fff;
             border-radius: 8px;
             outline: none;
             font-size: 14px;
-            transition: 0.3s;
         }
-        select:focus, input:focus {
-            border-color: #00f0ff;
-            box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
-        }
-        .launch-btn {
+        input:focus, select:focus { border-color: #22d3ee; box-shadow: 0 0 10px rgba(34, 211, 238, 0.4); }
+        .btn {
             width: 100%;
-            background: linear-gradient(90deg, #0284c7, #00f0ff);
-            color: #000;
+            background: linear-gradient(135deg, #0ea5e9, #22d3ee);
+            color: #0f172a;
             font-weight: bold;
             padding: 14px;
             border: none;
             border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.2s;
             margin-top: 10px;
-            text-shadow: none;
         }
-        .launch-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
-        }
+        .btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(34, 211, 238, 0.6); }
     </style>
 </head>
 <body>
 
-    <div class="launcher-container">
+    <div class="launcher-box">
         <h1>VORTEX CLIENT</h1>
-        <p class="studio">BY TRAKXIS GAMES</p>
+        <div class="studio">TRAKXIS GAMES</div>
         
-        <div class="input-group">
-            <label>اسم اللاعب (Account)</label>
-            <input type="text" id="username" placeholder="أدخل اسمك هنا..." value="Ahmed_Sfaa">
+        <div class="field">
+            <label>اسم اللاعب (Username)</label>
+            <input type="text" id="username" value="Ahmed_Sfaa">
         </div>
 
-        <div class="input-group">
-            <label>اختر إصدار ماين كرافت (Minecraft Version)</label>
+        <div class="field">
+            <label>إصدار اللعبة (Version)</label>
             <select id="version">
                 <option value="1.21.5">Vortex 1.21.5 (Optimized)</option>
                 <option value="1.21.4">Vortex 1.21.4</option>
-                <option value="1.21.2">Vortex 1.21.2</option>
             </select>
         </div>
 
-        <button class="launch-btn" onclick="launchGame()">تشغيل اللعبة (LAUNCH)</button>
+        <button class="btn" onclick="launch()">تشغيل اللعبة (PLAY)</button>
     </div>
 
     <script>
-        function launchGame() {
-            const user = document.getElementById('username').value;
-            const ver = document.getElementById('version').value;
-            if(!user) {
-                alert('الرجاء إدخال اسم اللاعب!');
-                return;
-            }
-            alert('جاري إطلاق Vortex Client للإصدار ' + ver + ' للمستخدم ' + user + ' بنجاح! 🚀');
+        function launch() {
+            const u = document.getElementById('username').value;
+            const v = document.getElementById('version').value;
+            if(!u) { alert('الرجاء إدخال اسم اللاعب!'); return; }
+            alert('تم إقلاع لانشر Vortex Client بنجاح للإصدار ' + v + '!');
         }
     </script>
 </body>
