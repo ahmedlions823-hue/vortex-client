@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vortex Client | TRAKXIS GAMES</title>
+    <title>Vortex Launcher | SK Style</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
         body {
-            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+            background: linear-gradient(135deg, #090d16, #111827);
             color: #fff;
             height: 100vh;
             display: flex;
@@ -15,75 +15,161 @@
             align-items: center;
             overflow: hidden;
         }
-        .launcher-box {
-            background: rgba(15, 23, 42, 0.9);
-            border: 2px solid #06b6d4;
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
-            border-radius: 16px;
-            padding: 40px;
-            width: 420px;
-            text-align: center;
-            backdrop-filter: blur(12px);
-        }
-        h1 { color: #22d3ee; font-size: 26px; margin-bottom: 5px; letter-spacing: 2px; }
-        .studio { color: #94a3b8; font-size: 13px; margin-bottom: 25px; text-transform: uppercase; }
-        .field { margin-bottom: 20px; text-align: right; }
-        label { display: block; color: #38bdf8; font-size: 13px; margin-bottom: 8px; font-weight: 600; }
-        input, select {
-            width: 100%;
-            padding: 12px;
-            background: #020617;
+        .sk-launcher {
+            width: 750px;
+            height: 450px;
+            background: #1e293b;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            display: flex;
             border: 1px solid #334155;
-            color: #fff;
-            border-radius: 8px;
-            outline: none;
-            font-size: 14px;
+            overflow: hidden;
         }
-        input:focus, select:focus { border-color: #22d3ee; box-shadow: 0 0 10px rgba(34, 211, 238, 0.4); }
-        .btn {
+        .sidebar {
+            width: 240px;
+            background: #0f172a;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-left: 1px solid #334155;
+        }
+        .sidebar h2 { color: #38bdf8; font-size: 20px; margin-bottom: 5px; text-align: center; }
+        .sidebar p { color: #64748b; font-size: 11px; text-align: center; margin-bottom: 30px; }
+        
+        .account-box {
+            background: #1e293b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #475569;
+        }
+        .account-box label { font-size: 11px; color: #94a3b8; display: block; margin-bottom: 4px; }
+        .account-box input {
+            width: 100%; background: transparent; border: none; color: #fff; font-size: 14px; outline: none; font-weight: bold;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: radial-gradient(circle at top left, #1e293b, #0f172a);
+        }
+        .version-section label { display: block; color: #38bdf8; font-size: 13px; margin-bottom: 8px; font-weight: bold; }
+        .version-section select {
+            width: 100%; padding: 12px; background: #0f172a; border: 1px solid #475569; color: #fff; border-radius: 8px; outline: none; font-size: 14px;
+        }
+
+        .play-area {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .progress-bar {
+            width: 100%; height: 8px; background: #0f172a; border-radius: 4px; overflow: hidden; display: none;
+        }
+        .progress-fill {
+            width: 0%; height: 100%; background: #22d3ee; transition: width 0.4s ease;
+        }
+        .play-btn {
             width: 100%;
-            background: linear-gradient(135deg, #0ea5e9, #22d3ee);
+            background: linear-gradient(90deg, #0284c7, #22d3ee);
             color: #0f172a;
             font-weight: bold;
-            padding: 14px;
+            padding: 16px;
             border: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
             transition: 0.2s;
-            margin-top: 10px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
         }
-        .btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(34, 211, 238, 0.6); }
+        .play-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+        .status-text { font-size: 13px; color: #94a3b8; text-align: center; min-height: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="launcher-box">
-        <h1>VORTEX CLIENT</h1>
-        <div class="studio">TRAKXIS GAMES</div>
-        
-        <div class="field">
-            <label>اسم اللاعب (Username)</label>
-            <input type="text" id="username" value="Ahmed_Sfaa">
+    <div class="sk-launcher">
+        <!-- القائمة الجانبية (الحسابات) -->
+        <div class="sidebar">
+            <div>
+                <h2>VORTEX</h2>
+                <p>TRAKXIS GAMES CLIENT</p>
+                
+                <div class="account-box">
+                    <label>اسم اللاعب (Account)</label>
+                    <input type="text" id="username" value="Ahmed_Sfaa">
+                </div>
+            </div>
+            <div style="font-size: 11px; color: #64748b; text-align: center;">
+                v2.0.4-release
+            </div>
         </div>
 
-        <div class="field">
-            <label>إصدار اللعبة (Version)</label>
-            <select id="version">
-                <option value="1.21.5">Vortex 1.21.5 (Optimized)</option>
-                <option value="1.21.4">Vortex 1.21.4</option>
-            </select>
-        </div>
+        <!-- المحتوى الرئيسي (الإصدارات وزر التشغيل) -->
+        <div class="main-content">
+            <div class="version-section">
+                <label>اختر إصدار ماين كرافت (Minecraft Version)</label>
+                <select id="version">
+                    <option value="1.21.5">Release 1.21.5 (Optifine / Optimized)</option>
+                    <option value="1.21.4">Release 1.21.4 (Forge)</option>
+                    <option value="1.21.2">Release 1.21.2 (Vanilla)</option>
+                    <option value="1.20.4">Release 1.20.4 (Modded)</option>
+                </select>
+            </div>
 
-        <button class="btn" onclick="launch()">تشغيل اللعبة (PLAY)</button>
+            <div class="play-area">
+                <div class="status-text" id="statusText">جاهز للتشغيل</div>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <button class="play-btn" id="playBtn" onclick="startMinecraft()">تشغيل اللعبة (PLAY)</button>
+            </div>
+        </div>
     </div>
 
     <script>
-        function launch() {
-            const u = document.getElementById('username').value;
-            const v = document.getElementById('version').value;
-            if(!u) { alert('الرجاء إدخال اسم اللاعب!'); return; }
-            alert('تم إقلاع لانشر Vortex Client بنجاح للإصدار ' + v + '!');
+        function startMinecraft() {
+            const user = document.getElementById('username').value;
+            const ver = document.getElementById('version').value;
+            const status = document.getElementById('statusText');
+            const bar = document.getElementById('progressBar');
+            const fill = document.getElementById('progressFill');
+            const btn = document.getElementById('playBtn');
+
+            if(!user) {
+                alert('الرجاء إدخال اسم اللاعب أولاً!');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.style.opacity = '0.6';
+            bar.style.display = 'block';
+
+            // محاكاة عملية جلب الملفات والإقلاع تماماً مثل SK Launcher
+            status.innerText = 'جاري التحقق من ملفات الإصدار ' + ver + '...';
+            fill.style.width = '25%';
+
+            setTimeout(() => {
+                status.innerText = 'جاري تحميل مكتبات اللعبة للأقلاع...';
+                fill.style.width = '60%';
+            }, 1000);
+
+            setTimeout(() => {
+                status.innerText = 'جاري بدء تشغيل اللعبة للمستخدم ' + user + '...';
+                fill.style.width = '100%';
+            }, 2200);
+
+            setTimeout(() => {
+                status.innerText = 'تم إطلاق اللعبة بنجاح! 🚀';
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                btn.innerText = 'إعادة التشغيل';
+            }, 3200);
         }
     </script>
 </body>
